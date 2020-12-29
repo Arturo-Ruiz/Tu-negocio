@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Category;
+use App\Product;
+use App\User;
 
 class PanelAdmin extends Controller
 {
@@ -14,7 +16,10 @@ class PanelAdmin extends Controller
         if(Auth::check()){
             if(Auth::user()->role == 'Administrador'){
                 $categories_number = Category::all()->count();
-                return view('admin.index', compact('categories_number'));
+                $products_number = Product::all()->count();
+                $users_number = Product::all()->count();
+
+                return view('admin.index', compact('categories_number', 'products_number', 'users_number'));
             }else{
                 return redirect(route('index'));
             }

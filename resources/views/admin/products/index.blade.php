@@ -44,14 +44,14 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('Categories.index')}}">
+                    <a class="nav-link " href="{{route('Categories.index')}}">
                       <i class="ni ni-bullet-list-67 "></i>
                       <span class="nav-link-text">Categorías</span>
                     </a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('Products.index')}}">
+                    <a class="nav-link active" href="{{route('Products.index')}}">
                       <i class="fab fa-wpforms"></i>
                       <span class="nav-link-text">Productos</span>
                     </a>
@@ -143,24 +143,53 @@
           </div>
         </nav>
         <div class="main-content" id="panel">
+
             <!-- Header -->
             <!-- Header -->
             <div class="header bg-primary pb-6">
+                @if (session('info'))
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="alert alert-success">
+                                {{ session('info') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+                @if (session('danger'))
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="alert alert-danger">
+                                {{ session('danger') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
                 <div class="container-fluid">
                     <div class="header-body">
                       <div class="row align-items-center py-4">
                         <div class="col-lg-6 col-7">
-                      <h6 class="h2 text-white d-inline-block mb-0">Categorías Registradas</h6>
+                      <h6 class="h2 text-white d-inline-block mb-0">Productos Registrados</h6>
 
                           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                               <li class="breadcrumb-item"><a href="{{route('panel-admin')}}"><i class="fas fa-home"></i></a></li>
-                              <li class="breadcrumb-item active"><a href="#">Categorías</a></li>
+                              <li class="breadcrumb-item active"><a href="#">Productos</a></li>
                             </ol>
                           </nav>
                         </div>
                         <div class="col-lg-6 col-5 text-right">
-                          <a href="#"  data-toggle="modal" data-target="#registrar_categoria" class="prueba_boton_registrar btn btn-lg btn-neutral"> Registrar</a>
+                          <a href="#"  data-toggle="modal" data-target="#registrar_producto" class="prueba_boton_registrar btn btn-lg btn-neutral"> Registrar</a>
                         </div>
                       </div>
                     </div>
@@ -173,7 +202,7 @@
                       <div class="card">
                         <!-- Card header -->
                         <div class="card-header border-0">
-                          <h3 class="mb-0">Categorías Registradas</h3>
+                          <h3 class="mb-0">Productos Registrados</h3>
                         </div>
                         <!-- Light table -->
                         <div class="table-responsive">
@@ -181,29 +210,46 @@
                             <thead class="thead-light">
                               <tr>
                                 <th scope="col" class="sort" data-sort="name">ID</th>
+                                <th scope="col" class="sort" data-sort="name">Imagen</th>
                                 <th scope="col" class="sort" data-sort="budget">Nombre</th>
+                                <th scope="col" class="sort" data-sort="budget">Descripcion</th>
+                                <th scope="col" class="sort" data-sort="budget">Precio</th>
+                                <th scope="col" class="sort" data-sort="budget">Categoria</th>
                                 <th scope="col" class="sort" data-sort="status">Acciones</th>
                               </tr>
                             </thead>
                             <tbody class="list">
-                                @foreach ($categories as $category )
+                                @foreach ($products as $product )
 
                               <tr>
                                 <th scope="row">
                                   <div class="media align-items-center">
                                     <div class="media-body">
-                                      <span class="name mb-0 text-sm">{{$category->id}}</span>
+                                      <span class="name mb-0 text-sm">{{$product->id}}</span>
                                     </div>
                                   </div>
                                 </th>
                                 <td class="budget">
-                                    {{$category->name}}
+                                    <img class="img-thumbnail" width="80px" src={{asset($product->img)}} alt="Imagen_del_Producto">
+                                </td>
+                                <td class="budget">
+                                    {{$product->name}}
+                                </td>
+
+                                <td class="budget">
+                                    {{$product->description}}
+                                </td>
+                                <td class="budget">
+                                    {{$product->price}}
+                                </td>
+                                <td class="budget">
+                                    {{$product->category->name}}
                                 </td>
 
                                 <td>
                                     <span class="badge badge-dot mr-4">
                                       <span class="status">
-                                          <form method="POST" action="{{route('Categories.destroy', $category->id)}}">
+                                          <form method="POST" action="{{route('Products.destroy', $product->id)}}">
                                             @csrf
                                             @method('DELETE')
                                               <button class="btn btn-danger">Eliminar</button>
@@ -265,16 +311,16 @@
 
 
 
-          <div class="modal fade" id="registrar_categoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="registrar_producto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Registrar Categoria</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Registrar Producto</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form action="{{route('Categories.store')}}" method="POST">
+                <form action="{{route('Products.store')}}" enctype="multipart/form-data" method="POST">
 
                 <div class="modal-body">
                         @csrf
@@ -287,10 +333,49 @@
                           </div>
                         </div>
 
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
+                              </div>
+                                <textarea class="form-control" name="description" required placeholder="Ingresar Descripción del Producto"  cols="3" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"> <b>COP</b></span>
+                              </div>
+                              <input class="form-control" placeholder="Ingresar Precio" name="price"  required type="number">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="input-group input-group-alternative mb-3">
+
+                              <select class="form-control" name="category_id">
+                                <option value="" disabled selected>Selecciona la Categoria</option>
+
+                                @foreach ($categories as $category)
+                                    <option value="{{$category->id}}" >{{$category->name}}</option>
+                                 @endforeach
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Imagen:
+                            <div class="input-group input-group-alternative mb-3">
+                                <input id="img" name="img" class="form-control" type="file">
+                            </div>
+                        </div>
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  <button  type="submit" class="btn test-buuton btn-primary">Registrar Categoria</button>
+                  <button  type="submit" class="btn test-buuton btn-primary">Registrar Producto</button>
                 </form>
 
                 </div>

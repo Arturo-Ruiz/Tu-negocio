@@ -47,6 +47,12 @@
                       <span class="nav-link-text">Categorías</span>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('Products.index')}}">
+                      <i class="fab fa-wpforms"></i>
+                      <span class="nav-link-text">Productos</span>
+                    </a>
+                </li>
                 @endif
 
 
@@ -158,7 +164,7 @@
                         <div class="row">
                           <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Productos Registrados</h5>
-                            <span class="h2 font-weight-bold mb-0"></span>
+                            <span class="h2 font-weight-bold mb-0">{{$products_number}}</span>
                           </div>
                           <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
@@ -176,7 +182,7 @@
                       <div class="row">
                         <div class="col">
                           <h5 class="card-title text-uppercase text-muted mb-0">Usuarios Registrados</h5>
-                          <span class="h2 font-weight-bold mb-0"></span>
+                          <span class="h2 font-weight-bold mb-0">{{$users_number}}</span>
                         </div>
                         <div class="col-auto">
                           <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
