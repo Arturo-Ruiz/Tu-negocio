@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('Panel-Administrativo', 'Admin\PanelAdmin@index')->name('panel-admin');
+
+Route::resource('Categories', 'Admin\CategoriesController');
