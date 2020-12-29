@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', 'Inicio', 301);
+
+Route::get('/Inicio', 'Web\IndexController@index')->name('index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('Panel-Administrativo', 'Admin/Panel-Admin@index')->name('panel-admin');
+Route::get('Panel-Administrativo', 'Admin\PanelAdmin@index')->name('panel-admin');
