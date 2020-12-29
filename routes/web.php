@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('Panel-Administrativo', 'Admin/Panel-Admin@index')->name('panel-admin');
