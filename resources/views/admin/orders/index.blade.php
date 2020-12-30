@@ -51,14 +51,14 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link active" href="{{route('Products.index')}}">
+                    <a class="nav-link" href="{{route('Products.index')}}">
                       <i class="fab fa-wpforms"></i>
                       <span class="nav-link-text">Productos</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('Orders.index')}}">
+                    <a class="nav-link active" href="{{route('Orders.index')}}">
                         <i class="fas fa-boxes"></i>
                         <span class="nav-link-text">Pedidos</span>
                     </a>
@@ -186,17 +186,14 @@
                     <div class="header-body">
                       <div class="row align-items-center py-4">
                         <div class="col-lg-6 col-7">
-                      <h6 class="h2 text-white d-inline-block mb-0">Productos Registrados</h6>
+                      <h6 class="h2 text-white d-inline-block mb-0">Pedidos Registrados</h6>
 
                           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                               <li class="breadcrumb-item"><a href="{{route('panel-admin')}}"><i class="fas fa-home"></i></a></li>
-                              <li class="breadcrumb-item active"><a href="#">Productos</a></li>
+                              <li class="breadcrumb-item active"><a href="#">Pedidos</a></li>
                             </ol>
                           </nav>
-                        </div>
-                        <div class="col-lg-6 col-5 text-right">
-                          <a href="#"  data-toggle="modal" data-target="#registrar_producto" class="prueba_boton_registrar btn btn-lg btn-neutral"> Registrar</a>
                         </div>
                       </div>
                     </div>
@@ -209,7 +206,7 @@
                       <div class="card">
                         <!-- Card header -->
                         <div class="card-header border-0">
-                          <h3 class="mb-0">Productos Registrados</h3>
+                          <h3 class="mb-0">Pedidos Registrados</h3>
                         </div>
                         <!-- Light table -->
                         <div class="table-responsive">
@@ -217,46 +214,45 @@
                             <thead class="thead-light">
                               <tr>
                                 <th scope="col" class="sort" data-sort="name">ID</th>
-                                <th scope="col" class="sort" data-sort="name">Imagen</th>
-                                <th scope="col" class="sort" data-sort="budget">Nombre</th>
-                                <th scope="col" class="sort" data-sort="budget">Descripcion</th>
-                                <th scope="col" class="sort" data-sort="budget">Precio</th>
-                                <th scope="col" class="sort" data-sort="budget">Categoria</th>
+                                <th scope="col" class="sort" data-sort="name">Nombre del cliente</th>
+                                <th scope="col" class="sort" data-sort="budget">Telefono</th>
+                                <th scope="col" class="sort" data-sort="budget">Productos</th>
+                                <th scope="col" class="sort" data-sort="budget">Status</th>
+                                <th scope="col" class="sort" data-sort="budget">Total</th>
                                 <th scope="col" class="sort" data-sort="status">Acciones</th>
                               </tr>
                             </thead>
                             <tbody class="list">
-                                @foreach ($products as $product )
+                                @foreach ($orders as $order )
 
                               <tr>
                                 <th scope="row">
                                   <div class="media align-items-center">
                                     <div class="media-body">
-                                      <span class="name mb-0 text-sm">{{$product->id}}</span>
+                                      <span class="name mb-0 text-sm">{{$order->id}}</span>
                                     </div>
                                   </div>
                                 </th>
                                 <td class="budget">
-                                    <img class="img-thumbnail" width="80px" src={{asset($product->img)}} alt="Imagen_del_Producto">
+                                    {{$order->name}}
                                 </td>
                                 <td class="budget">
-                                    {{$product->name}}
-                                </td>
-
-                                <td class="budget">
-                                    {{$product->description}}
+                                    {{$order->email}}
                                 </td>
                                 <td class="budget">
-                                    {{$product->price}}
+                                    {{$order->products}}
                                 </td>
                                 <td class="budget">
-                                    {{$product->category->name}}
+                                    {{$order->status}}
+                                </td>
+                                <td class="budget">
+                                    {{$order->total}}
                                 </td>
 
                                 <td>
                                     <span class="badge badge-dot mr-4">
                                       <span class="status">
-                                          <form method="POST" action="{{route('Products.destroy', $product->id)}}">
+                                          <form method="POST" action="{{route('Orders.destroy', $order->id)}}">
                                             @csrf
                                             @method('DELETE')
                                               <button class="btn btn-danger">Eliminar</button>
@@ -317,77 +313,6 @@
 
 
 
-
-          <div class="modal fade" id="registrar_producto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Registrar Producto</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <form action="{{route('Products.store')}}" enctype="multipart/form-data" method="POST">
-
-                <div class="modal-body">
-                        @csrf
-                        <div class="form-group">
-                          <div class="input-group input-group-alternative mb-3">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-tag"></i></span>
-                            </div>
-                            <input class="form-control" placeholder="Ingresar Nombre" name="name"  required type="text">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group input-group-alternative mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
-                              </div>
-                                <textarea class="form-control" name="description" required placeholder="Ingresar Descripción del Producto"  cols="3" rows="3"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group input-group-alternative mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"> <b>COP</b></span>
-                              </div>
-                              <input class="form-control" placeholder="Ingresar Precio" name="price"  required type="number">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <div class="input-group input-group-alternative mb-3">
-
-                              <select class="form-control" name="category_id">
-                                <option value="" disabled selected>Selecciona la Categoria</option>
-
-                                @foreach ($categories as $category)
-                                    <option value="{{$category->id}}" >{{$category->name}}</option>
-                                 @endforeach
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            Imagen:
-                            <div class="input-group input-group-alternative mb-3">
-                                <input id="img" name="img" class="form-control" type="file">
-                            </div>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  <button  type="submit" class="btn test-buuton btn-primary">Registrar Producto</button>
-                </form>
-
-                </div>
-              </div>
-            </div>
           </div>
 
 

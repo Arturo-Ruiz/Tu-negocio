@@ -56,6 +56,13 @@
                       <span class="nav-link-text">Productos</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('Orders.index')}}">
+                        <i class="fas fa-boxes"></i>
+                        <span class="nav-link-text">Pedidos</span>
+                    </a>
+                </li>
                 @endif
 
 
