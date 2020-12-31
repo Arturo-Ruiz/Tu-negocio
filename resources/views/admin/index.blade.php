@@ -294,7 +294,7 @@
     <script src="{{ asset('admin/vendor/chart.js/Chart.extension.js') }}"></script>
     <!-- Arturo JS -->
     <script src="{{ asset('admin/js/1.js') }}"></script>
-    {{-- <script>
+    <script>
         var enero = JSON.parse("{{ json_encode($enero) }}")
         var febrero = JSON.parse("{{ json_encode($febrero) }}")
         var marzo = JSON.parse("{{ json_encode($marzo) }}")
@@ -349,6 +349,6 @@
                 }
             }
         });
-        </script> --}}
+        </script>
 </body>
 </html>
