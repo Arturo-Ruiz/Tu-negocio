@@ -54,7 +54,6 @@ class ProductsController extends Controller
         $product->img  = $url;
         $product->category_id   =  $request->category_id;
 
-
         $product->save();
 
         return redirect()->route('Products.index')->with('info', 'Guardado Correctamente');

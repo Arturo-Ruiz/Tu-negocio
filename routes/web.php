@@ -17,9 +17,34 @@ Route::redirect('/', 'Inicio', 301);
 
 Route::get('/Inicio', 'Web\IndexController@index')->name('index');
 
+Route::get('/Iniciar-Sesion', 'Web\LoginFrontController@index')->name('login');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

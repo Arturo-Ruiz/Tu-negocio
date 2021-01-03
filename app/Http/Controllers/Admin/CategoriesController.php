@@ -31,8 +31,18 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-        $category = Category::create($request->all());
-        return back();
+        $categories_number = Category::where('index', '1')->count();
+        if($request->index === '1'){
+            if($categories_number === 3 ){
+                return back()->with('danger', 'Solamente pueden existir 3 categorias en el inicio');
+            }
+        }
+        $category = new Category;
+        $category->name  =  $request->name;
+        $category->index  =  $request->index;
+        $category->save();
+
+        return back()->with('info', 'Guardado Correctamente');
     }
 
     /**
@@ -44,6 +54,6 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id)->delete();
-        return back();
+        return back()->with('danger', 'Eliminado Correctamente');
     }
 }

@@ -153,6 +153,34 @@
             <!-- Header -->
             <!-- Header -->
             <div class="header bg-primary pb-6">
+                @if (session('info'))
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="alert alert-success">
+                                {{ session('info') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+                @if (session('danger'))
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="alert alert-danger">
+                                {{ session('danger') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
                 <div class="container-fluid">
                     <div class="header-body">
                       <div class="row align-items-center py-4">
@@ -189,6 +217,7 @@
                               <tr>
                                 <th scope="col" class="sort" data-sort="name">ID</th>
                                 <th scope="col" class="sort" data-sort="budget">Nombre</th>
+                                <th scope="col" class="sort" data-sort="budget">En el inicio</th>
                                 <th scope="col" class="sort" data-sort="status">Acciones</th>
                               </tr>
                             </thead>
@@ -205,6 +234,17 @@
                                 </th>
                                 <td class="budget">
                                     {{$category->name}}
+                                </td>
+                                <td class="budget">
+                                    <?php
+                                        if ($category->index === '1') {
+                                            echo'Aparece en el inicio';
+                                        } else {
+                                            echo'No aparece en el inicio';
+                                        };
+
+                                    ?>
+
                                 </td>
 
                                 <td>
@@ -237,7 +277,7 @@
                 <div class="row align-items-center justify-content-lg-between">
                   <div class="col-lg-6">
                     <div class="copyright text-center  text-lg-left  text-muted">
-                      &copy; 2020 <a href="https://www.artic-solutions.com/" class="font-weight-bold ml-1" target="_blank">Artic Solutions</a> &<a href="https://colvengroup.com/" class="font-weight-bold ml-1" target="_blank">Colvengroup</a>
+                      &copy; 2021 <a href="https://www.artic-solutions.com/" class="font-weight-bold ml-1" target="_blank">Artic Solutions</a> &<a href="https://colvengroup.com/" class="font-weight-bold ml-1" target="_blank">Colvengroup</a>
                     </div>
                   </div>
                   <div class="col-lg-6">
@@ -293,6 +333,16 @@
                             <input class="form-control" placeholder="Ingresar Nombre" name="name"  required type="text">
                           </div>
                         </div>
+
+                        <div class="form-group">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" name="index" type="checkbox" value="1" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      En el Inicio
+                                    </label>
+                                  </div>
+                          </div>
 
                 </div>
                 <div class="modal-footer">
