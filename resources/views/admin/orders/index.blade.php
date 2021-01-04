@@ -240,16 +240,47 @@
                                     {{$order->email}}
                                 </td>
                                 <td class="budget">
-                                    {{$order->products}}
+                                    <?php
+                                    $test = json_decode($order->products);
+                                   foreach ($test as $key) {
+                                      echo $key->cantidad;
+                                      echo " ";
+                                      echo $key->nombre;
+                                      echo " ;";
+                                      echo "<br>";
+                                   }
+                                    ?>
                                 </td>
                                 <td class="budget">
-                                    {{$order->status}}
+                                    <?php
+                                        $status = $order->status;
+                                        if ($status === "1" ) {
+                                            echo '<button class="btn btn-info">En Proceso</button>';
+                                        }
+                                        if ($status === "2" ) {
+                                            echo '<button class="btn btn-success">Entregado</button>';
+                                        }
+                                        if ($status === "3" ) {
+                                            echo '<button class="btn btn-warning">Cancelado</button>';
+                                        }
+
+                                    ?>
                                 </td>
                                 <td class="budget">
                                     {{$order->total}}
                                 </td>
 
                                 <td>
+                                    @if ($order->status === '1')
+                                        <a href="{{route('update-order',  $order->id)}}" class="btn btn-primary">Entregar</a>
+                                        <a href="{{route('cancel-order', $order->id)}}" class="btn btn-warning">Cancelado</a>
+                                    @endif
+                                    @if ($order->status === '2')
+
+                                @endif
+                                @if ($order->status === '3')
+
+                                @endif
                                     <span class="badge badge-dot mr-4">
                                       <span class="status">
                                           <form method="POST" action="{{route('Orders.destroy', $order->id)}}">

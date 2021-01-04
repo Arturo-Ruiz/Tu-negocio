@@ -105,268 +105,129 @@
               <hr class="green">
               <p class="text-center h2 text-dark"> Catálogo</p>
               <hr class="green">
-              <p class="h4  pt-4">Categoria 1</p>
+              <p class="h4  pt-4"><?php   echo $categories_all[0];    ?></p>
 
 
               <div class="catalogo-1 py-4">
                   <!-- Item 1 -->
-                  <div class="mx-2 ">
-                      <div class="card  " >
-                          <img src="img/product4.jpg" class=" d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Iphone X blanco</h5>
-                            <p class="card-text">Memoria: 64GB/256GB</p>
-                            <p class="card-text">RAM: 3GB </p>
-                            <p class="text-center h6 card-price" ><span class="fas fa-dollar-sign text-success mr-1"></span>500.00</p>
-                            <a type="submit" class="btn btn-success col">Añadir al carrito</a>
-                            <!-- <div class="row cart_cantidad_boton justify-content-center">
-                              <a class="cart_cantidad_restar btn btn-success" href="#"> -  </a>
-                              <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="1">
-                              <a class="cart_cantidad_sumar btn btn-s uccess" href="#"> + </a>
-                            </div> -->
-                          </div>
-                        </div>
-                  </div>
+                  <?php
+                  $productos_0 = $products_all[0];
+                  foreach ($productos_0 as $key) {
+                      echo'<div class="mx-2">';
+                      echo'<div class="card" >';
+                      echo'<img src="';
+                      echo $key->img;
+                      echo '" class="d-block img-fluid" alt="Imagen del producto">';
+                      echo '<div class="p-2">';
+                      echo '<p class="none">';
+                      echo $key->id;
+                      echo '</p>';
+                      echo '<p class="">';
+                      echo $key->id;
+                      echo '</p>';
+                      echo'<h5 class="card-title">';
+                      echo $key->name;
+                      echo '</h5>';
+                      echo '<p class="card-text">';
+                      echo $key->description;
+                      echo '</p>';
+                      echo '<p class="card-text none">RAM: 8GB</p>';
+                      echo '<p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>';
+                      echo $key->price;
+                      echo '</p>';
+                      echo'<a href="" class="btn btn-success col">Añadir al carrito</a>
+                            </div>
+                          </div>  </div>';
+                  }
 
-                  <!-- Item 2 -->
-
-                  <div class="mx-2 ">
-                      <div class="card" >
-                          <img src="img/product5.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Samsung S6</h5>
-                            <p class="card-text">Memoria: 64GB/132GB</p>
-                            <p class="card-text">RAM: 2GB </p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>120.00</p>
-                            <a type="submit" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
-
-                    <!-- Item 3 -->
-
-                    <div class="mx-2 ">
-                      <div class="card" >
-                          <img src="img/product6.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Samsung S5</h5>
-                            <p class="card-text">Memoria: 32GB/64GB</p>
-                            <p class="card-text">RAM: 2GB </p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>100.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
-
-                   <!-- Item 4 -->
-
-                   <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product7.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Xiaomi A7</h5>
-                            <p class="card-text">Memoria: 32GB</p>
-                            <p class="card-text">RAM: 2GB</p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>95.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
-
-                   <!-- Item 5 -->
-
-                   <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product9.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Mac Desktop</h5>
-                            <p class="card-text">Memoria: 1TB</p>
-                            <p class="card-text">RAM: 8GB</p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>850.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
+                 ?>
 
               </div> <!-- catalogo div -->
 
 
               <!-- catalogo 2 -->
-              <p class="h4  pt-4">Categoria 2</p>
+              <p class="h4  pt-4"><?php   echo $categories_all[1];    ?></p>
               <div class="catalogo-1 py-4">
-                  <!-- Item 1 -->
-                  <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product5.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Samsung S6</h5>
-                            <p class="card-text">Memoria: 64GB/132GB</p>
-                            <p class="card-text">RAM: 2GB </p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>120.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
+                <?php
+                $productos_2 = $products_all[1];
+                foreach ($productos_2 as $key) {
+                    echo'<div class="mx-2">';
+                    echo'<div class="card" >';
+                    echo'<img src="';
+                    echo $key->img;
+                    echo '" class="d-block img-fluid" alt="Imagen del producto">';
+                    echo '<div class="p-2">';
+                    echo '<p class="none">';
+                    echo $key->id;
+                    echo '</p>';
+                    echo '<p class="">';
+                    echo $key->id;
+                    echo '</p>';
+                    echo'<h5 class="card-title">';
+                    echo $key->name;
+                    echo '</h5>';
+                    echo '<p class="card-text">';
+                    echo $key->description;
+                    echo '</p>';
+                    echo '<p class="card-text none">RAM: 8GB</p>';
+                    echo '<p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>';
+                    echo $key->price;
+                    echo '</p>';
+                    echo'<a href="" class="btn btn-success col">Añadir al carrito</a>
                           </div>
-                        </div>
-                  </div>
+                        </div>  </div>';
+                }
 
-
-
-                  <!-- Item 2 -->
-
-                  <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product7.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Xiaomi A7</h5>
-                            <p class="card-text">Memoria: 32GB</p>
-                            <p class="card-text">RAM: 2GB</p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>95.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
-                    <!-- Item 3 -->
-
-                    <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product6.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Samsung S5</h5>
-                            <p class="card-text">Memoria: 32GB/64GB</p>
-                            <p class="card-text">RAM: 2GB </p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>100.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
-
-                   <!-- Item 4 -->
-
-                   <div class="mx-2">
-                      <div class="card  ">
-                          <img src="img/product4.jpg" class=" d-block img-fluid" alt="...">
-                          <div class="p-2">
-                              <h5 class="card-title">Iphone X blanco</h5>
-                              <p class="card-text">Memoria: 64GB/256GB</p>
-                              <p class="card-text">RAM: 3GB </p>
-                              <p class="text-center h6 card-price"><span
-                                      class="fas fa-dollar-sign text-success mr-1"></span>500.00</p>
-                              <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                      </div>
-                  </div>
-
-                   <!-- Item 5 -->
-
-                   <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product9.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Mac Desktop</h5>
-                            <p class="card-text">Memoria: 1TB</p>
-                            <p class="card-text">RAM: 8GB</p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>850.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
+               ?>
 
               </div> <!-- catalogo div -->
 
 
               <!-- catalogo 3 -->
-              <p class="h4  pt-4">Categoria 3</p>
+              <p class="h4  pt-4"><?php   echo $categories_all[2];    ?></p>
+
               <div class="catalogo-1 py-4">
+                <?php
+                $productos_3 = $products_all[2];
+                foreach ($productos_3 as $key) {
+                    echo'<div class="mx-2">';
+                    echo'<div class="card" >';
+                    echo'<img src="';
+                    echo $key->img;
+                    echo '" class="d-block img-fluid" alt="Imagen del producto">';
+                    echo '<div class="p-2">';
+                    echo '<p class="none">';
+                    echo $key->id;
+                    echo '</p>';
+                    echo '<p class="">';
+                    echo $key->id;
+                    echo '</p>';
+                    echo'<h5 class="card-title">';
+                    echo $key->name;
+                    echo '</h5>';
+                    echo '<p class="card-text">';
+                    echo $key->description;
+                    echo '</p>';
+                    echo '<p class="card-text none">RAM: 8GB</p>';
+                    echo '<p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>';
+                    echo $key->price;
+                    echo '</p>';
+                    echo'<a href="" class="btn btn-success col">Añadir al carrito</a>
+                          </div>
+                        </div>  </div>';
+                }
+
+               ?>
                   <!-- Item 1 -->
-                  <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product9.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <p class="none">162612612</p>
-
-                            <h5 class="card-title">Mac Desktop</h5>
-                            <p class="card-text">Memoria: 1TB</p>
-                            <p class="card-text">RAM: 8GB</p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>850.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
-                  <div class="mx-2">
-                    <div class="card" >
-                        <img src="img/product9.jpg" class="d-block img-fluid" alt="...">
-                        <div class="p-2">
-                          <p class="none">2323332</p>
-
-                          <h5 class="card-title">Mac 2 Desktop</h5>
-                          <p class="card-text">Memoria: 1TB</p>
-                          <p class="card-text">RAM: 8GB</p>
-                          <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>850.00</p>
-                          <a href="" class="btn btn-success col">Añadir al carrito</a>
-                        </div>
-                      </div>
-                </div>
-                  <!-- Item 2 -->
-
-                  <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product6.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Samsung S5</h5>
-                            <p class="card-text">Memoria: 32GB/64GB</p>
-                            <p class="card-text">RAM: 2GB </p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>100.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
 
 
 
-                    <!-- Item 3 -->
 
-                    <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product5.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Samsung S6</h5>
-                            <p class="card-text">Memoria: 64GB/132GB</p>
-                            <p class="card-text">RAM: 2GB </p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>120.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
 
-                   <!-- Item 4 -->
 
-                   <div class="mx-2">
-                      <div class="card" >
-                          <img src="img/product7.jpg" class="d-block img-fluid" alt="...">
-                          <div class="p-2">
-                            <h5 class="card-title">Xiaomi A7</h5>
-                            <p class="card-text">Memoria: 32GB</p>
-                            <p class="card-text">RAM: 2GB</p>
-                            <p class="text-center h6" ><span class="fas fa-dollar-sign text-success mr-1"></span>95.00</p>
-                            <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                        </div>
-                  </div>
 
-                   <!-- Item 5 -->
 
-                   <div class="mx-2">
-                      <div class="card  ">
-                          <img src="img/product4.jpg" class=" d-block img-fluid" alt="...">
-                          <div class="p-2">
-                              <p class="none">162612612</p>
-                              <h5 class="card-title">Iphone X blanco</h5>
-                              <p class="card-text">Memoria: 64GB/256GB</p>
-                              <p class="card-text">RAM: 3GB </p>
-                              <p class="text-center h6 card-price"><span
-                                      class="fas fa-dollar-sign text-success mr-1"></span>500.00</p>
-                              <a href="" class="btn btn-success col">Añadir al carrito</a>
-                          </div>
-                      </div>
+
                   </div>
               </div> <!-- catalogo div -->
           </div>
@@ -384,16 +245,51 @@
           <div class=" row justify-content-center py-5">
             <p class="h2">Detalles del pedido</p>
           </div>
+          @if (session('danger'))
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12 ">
+                      <div class="alert alert-danger">
+                          {{ session('danger') }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      @endif
+      @if (session('info'))
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12 ">
+                  <div class="alert alert-success">
+                      {{ session('info') }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  @endif
+          <form action="{{route('take-order')}}" method="POST">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+            <input type="hidden" name="productos" id="array" >
+            <input  type="hidden" name="total_venta" id="total_venta" >
+
+
           <div class="row mb-2">
             <div class="col-md-4">
-              <input type="text" placeholder="Ingresa tu Nombre" class="form-control mt-3">
+              <input type="text" name="name" required placeholder="Ingresa tu Nombre" class="form-control mt-3">
 
             </div>
             <div class="col-md-4">
-              <input type="text" placeholder="Ingresa Tu Numero de telefono" class="form-control mt-3">
+              <input type="text" name="phone" required placeholder="Ingresa Tu Numero de telefono" class="form-control mt-3">
             </div>
             <div class="col-md-4">
-              <input type="email" placeholder="Ingresa Tu Correo Electronico" class="form-control mt-3">
+              <input type="email" name="email" required placeholder="Ingresa Tu Correo Electronico" class="form-control mt-3">
             </div>
           </div>
           <div class="row ">
@@ -443,12 +339,13 @@
 
             <!-- confirmar y Cancelar -->
             <div class="row justify-content-center py-4">
-              <button class="btn btn-success mx-2 my-1 col-md-3">Confirmar y enviar</button>
+              <button type="submit" class="btn btn-success mx-2 my-1 col-md-3">Confirmar y enviar</button>
               <button class="btn btn-outline-danger mx-2 my-1 col-md-3">Cancelar</button>
             </div>
         </div>
-      </section>
 
+    </form>
+      </section>
     <br /><br />
     <footer class="footer">
       <div class="container">

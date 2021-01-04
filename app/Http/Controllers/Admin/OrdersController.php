@@ -82,6 +82,24 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id)->delete();
+        return redirect()->route('Orders.index')->with('danger', 'Eliminado Correctamente');
+    }
+
+    public function Aprobar($id)
+    {
+        $order = Order::find($id);
+        $order->status  = '2';
+        $order->save();
+
+        return redirect()->route('Orders.index')->with('info', 'Estatus del pedido actualizado correctamente');
+    }
+    public function Cancelar($id)
+    {
+        $order = Order::find($id);
+        $order->status  = '3';
+        $order->save();
+
+        return redirect()->route('Orders.index')->with('info', 'Estatus del pedido actualizado correctamente');
     }
 }

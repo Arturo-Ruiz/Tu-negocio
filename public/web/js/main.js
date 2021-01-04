@@ -27,7 +27,6 @@ $('.catalogo-1').slick({
    // CARGAR PEDIDOS EN TABLA
 
   // Variables globales
-  localStorage.total_venta= 0;
   const divProducto   = document.querySelector('.productoCont');
   const tablaPedido   = document.querySelector('#tablaDetalle');
   const price   = document.querySelector('#price');
@@ -35,6 +34,8 @@ $('.catalogo-1').slick({
   const cantProducto = document.querySelector('.cart_quantity_input').value;
   let arrayProducto   = [];
   var total_venta = localStorage.total_venta;
+  const array   = document.querySelector('#array');
+
 
 
 
@@ -65,6 +66,10 @@ $('.catalogo-1').slick({
     localStorage.setItem('item', JSON.stringify(arrayProducto));
     localStorage.setItem('total_venta', total_venta);
     insertarTabla();
+    $("#array").val(localStorage.item);
+    $("#total_venta").val(localStorage.total_venta);
+
+
 }
 
 const insertarTabla = () => {
@@ -191,12 +196,12 @@ function addQuantity(product_id, precio)
 
     e.preventDefault();
     // console.log(e);
-
       let id              = (e.path[1].childNodes[1].innerHTML);
-      let nombreProducto  = (e.path[1].childNodes[3].innerHTML);
-      let descripcion1    = (e.path[1].childNodes[5].innerHTML);
-      let descripcion2    = (e.path[1].childNodes[7].innerHTML);
-      let precio          = (e.path[1].childNodes[9].innerText);
+      let nombreProducto  = (e.path[1].childNodes[2].innerHTML);
+      let descripcion1    = (e.path[1].childNodes[3].innerHTML);
+      let descripcion2    = 'no'
+      let precio          = (e.path[1].childNodes[5].innerText);
+
 
 
 
@@ -210,7 +215,9 @@ function addQuantity(product_id, precio)
 
   //  Al iniciar inserta en la tabla lo que haya en localStorage por si acaso
   addEventListener('DOMContentLoaded', insertarTabla);
-
+  
+  $("#array").val(localStorage.item);
+  $("#total_venta").val(localStorage.total_venta);
 
 
   $("#search-f").on("click", function() {
@@ -247,10 +254,6 @@ $("#search-mobile").on("click", function() {
 });
 
 
-price.innerHTML = "COP "+ localStorage.total_venta;
-
-price_m.innerHTML = "COP "+ localStorage.total_venta;
-
 $("#back-to-top").on("click", function () {
   $("body,html").animate(
     {
@@ -269,3 +272,15 @@ $("#back-to-top-s").on("click", function () {
     800
   );
 });
+
+
+if(localStorage.total_venta === undefined){
+    localStorage.total_venta = 0;
+    total_venta= 0;
+}else{
+    price.innerHTML = "COP "+ localStorage.total_venta;
+
+    price_m.innerHTML = "COP "+ localStorage.total_venta;
+
+}
+

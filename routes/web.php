@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::post('/Relizar-Pedido', 'Web\OrderController@index')->name('take-order');
 
 
 
@@ -59,3 +59,7 @@ Route::resource('Products', 'Admin\ProductsController');
 
 
 Route::resource('Orders', 'Admin\OrdersController');
+
+Route::any('Aprobar-Orden/{id}', 'Admin\OrdersController@Aprobar')->name('update-order');
+Route::any('Cancelar-Orden/{id}', 'Admin\OrdersController@Cancelar')->name('cancel-order');
+
