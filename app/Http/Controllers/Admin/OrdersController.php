@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
+use Auth;
 
 class OrdersController extends Controller
 {
@@ -15,8 +16,17 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        return view('admin.orders.index', compact('orders'));
+        if(Auth::check()){
+            if(Auth::user()->role == 'Administrador'){
+                $orders = Order::all();
+                return view('admin.orders.index', compact('orders'));
+            }else{
+                return redirect(route('index'));
+            }
+        }else{
+            return redirect(route('index'));
+        }
+
     }
 
     /**

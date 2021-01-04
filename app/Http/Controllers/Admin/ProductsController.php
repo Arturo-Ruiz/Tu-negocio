@@ -8,6 +8,7 @@ use App\Product;
 use App\Category;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Auth;
 
 class ProductsController extends Controller
 {
@@ -18,9 +19,18 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::All();
-        $categories = Category::All();
-        return view('admin.products.index', compact('products','categories'));
+        if(Auth::check()){
+            if(Auth::user()->role == 'Administrador'){
+                $products = Product::All();
+                $categories = Category::All();
+                return view('admin.products.index', compact('products','categories'));
+            }else{
+                return redirect(route('index'));
+            }
+        }else{
+            return redirect(route('index'));
+        }
+
     }
 
     /**
@@ -42,7 +52,7 @@ class ProductsController extends Controller
         $file  =  $request->img;
         $nombre = rand(1, 99999999999999).$file->getClientOriginalName();
         $ruta = storage_path().'\app\public\imagenes/'. $nombre;
-        Image::make($file)->save($ruta);
+        Image::make($file)->resize(1280, 720)->save($ruta);
         $url = 'storage/imagenes/' . $nombre;
 
 
