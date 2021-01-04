@@ -351,8 +351,8 @@
       <div class="container">
         <div class="d-flex justify-content-center">
           <div class="copyright">
-            &copy; 2020 <a href="" target="_blank">Arturo Ruiz y Henry Silva</a>.
-          </div>
+            &copy; 2020 <a href="https://www.artic-solutions.com/" class="font-weight-bold ml-1" target="_blank">Artic Solutions</a> &<a href="https://colvengroup.com/" class="font-weight-bold ml-1" target="_blank">Colvengroup</a>
+        </div>
 
 
         </div>
