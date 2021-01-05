@@ -51,8 +51,8 @@ class ProductsController extends Controller
 
         $file  =  $request->img;
         $nombre = rand(1, 99999999999999).$file->getClientOriginalName();
-        $ruta = storage_path().'\app\public\imagenes/'. $nombre;
-        dd($ruta);
+        $ruta = storage_path().'/app/public/imagenes/';
+
         Image::make($file)->resize(1280, 720)->save($ruta);
         $url = 'storage/imagenes/' . $nombre;
 
